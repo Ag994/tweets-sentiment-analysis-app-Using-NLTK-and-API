@@ -111,8 +111,7 @@ generate= st.button('Analyze')
 query= '{} lang:{} until:{} since:{}'.format(tweet,lang, end_date,start_date)
 tweets=[]
 
-def analyze():
-
+if generate:
     for tweet in sntwitter.TwitterSearchScraper(query).get_items():
         if len(tweets) == limit:
             break
@@ -229,10 +228,10 @@ def analyze():
     st.write(fig1)
 
 
-if generate:
-    with st.spinner("Executing..."):
-        result= analyze()
-    st.write(result)
+# if generate:
+#     with st.spinner("Executing..."):
+#         result= analyze()
+#     st.write(result)
     
 
     # fig.update_layout(margin={"t": 30, "b": 0})
