@@ -18,6 +18,7 @@ from nltk.corpus import stopwords
 from textblob import Word, TextBlob
 from nltk.stem import WordNetLemmatizer
 
+nltk.download('omw-1.4')
 
 
 
@@ -111,7 +112,7 @@ generate= st.button('Analyze')
 query= '{} lang:{} until:{} since:{}'.format(tweet,lang, end_date,start_date)
 tweets=[]
 
-if generate:
+def analyze:
     for tweet in sntwitter.TwitterSearchScraper(query).get_items():
         if len(tweets) == limit:
             break
@@ -228,10 +229,10 @@ if generate:
     st.write(fig1)
 
 
-# if generate:
-#     with st.spinner("Executing..."):
-#         result= analyze()
-#     st.write(result)
+if generate:
+    with st.spinner("Executing..."):
+        result= analyze()
+    st.write(result)
     
 
     # fig.update_layout(margin={"t": 30, "b": 0})
