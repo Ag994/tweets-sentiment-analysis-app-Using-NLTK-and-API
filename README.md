@@ -14,7 +14,7 @@
    pip --version
    ```
    
-   If you do not have Python or `pip` installed, you can install them by following the instructions [here]([https://pages.github.com/](https://realpython.com/installing-python/)).
+   If you do not have Python or `pip` installed, you can install them by following the instructions [here](https://realpython.com/installing-python/)
    
    
 
