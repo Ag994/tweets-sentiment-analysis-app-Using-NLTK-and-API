@@ -32,6 +32,15 @@
    pip install -r requirements.txt
    ```
    
+   This will install the `nltk` and `streamlit` libraries, which are needed to run the app.
+   
+   4. Launch the app by running the following command from the root directory of the project:
+   
+   
+   ```python
+   streamlit run app.py
+   ```
+   
    
 
 
