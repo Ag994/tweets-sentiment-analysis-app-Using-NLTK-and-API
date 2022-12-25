@@ -7,6 +7,10 @@
    To use this app, follow these steps:
    Make sure you have Python and pip installed on your machine. You can check if you have these installed by 
    running the following commands in your terminal:
+   
+   python --version
+   pip --version
+
 
 
 
