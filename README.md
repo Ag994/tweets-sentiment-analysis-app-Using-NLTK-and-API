@@ -9,6 +9,7 @@
    1. Make sure you have Python and pip installed on your machine. You can check if you have these installed by 
    running the following commands in your terminal:
    
+   
    ```python
    python --version
    pip --version
@@ -18,12 +19,14 @@
    
    2. Clone this repository and navigate to the root directory of the project.
    
+   
    ```python
    git clone https://github.com/Ag994/tweets-analysis-app.git
    cd tweet-analysis-app
    ```
    
    3. Install the required dependencies.
+   
 
    ```python
    pip install -r requirements.txt
