@@ -15,6 +15,7 @@
    ```
    
    If you do not have Python or `pip` installed, you can install them by following the instructions [here](https://realpython.com/installing-python/)
+   
    2. Clone this repository and navigate to the root directory of the project.
    
    ```python
