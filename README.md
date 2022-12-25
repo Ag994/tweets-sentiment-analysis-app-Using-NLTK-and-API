@@ -5,13 +5,16 @@
   
   ## Getting Started
    To use this app, follow these steps:
-   Make sure you have Python and pip installed on your machine. You can check if you have these installed by 
+   
+   1. Make sure you have Python and pip installed on your machine. You can check if you have these installed by 
    running the following commands in your terminal:
    
-   ```
+   ```python
    python --version
    pip --version
    ```
+   
+   
 
 
 
