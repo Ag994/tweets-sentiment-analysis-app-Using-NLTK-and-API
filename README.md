@@ -2,6 +2,7 @@
   <p> This app is built using Python, NLTK, and Streamlit. It allows users to input a Twitter 
   <br> handle and analyze the sentiment of their recent tweets. </p>
   
+  ![](https://github.com/Your_Repository_Name/Your_GIF_Name.gif)
   
   ## Getting Started
    To use this app, follow these steps:
