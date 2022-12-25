@@ -55,10 +55,14 @@
    * Adding more advanced sentiment analysis techniques, such as using machine learning models to classify tweets.
    * Adding additional analysis options, such as word frequency or topic modeling.
    * Implementing user authentication and the ability to save and compare analyses for different users.
+   
 
 
+   ## Need Help?
+   
+   If you have any issues with these instructions or encounter any errors while trying to run the app, please don't hesitate to reach out for help. I'm here to assist you in any way I can.
 
-
+I hope this helps! Let me know if you have any further questions.
 
 
 
