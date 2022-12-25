@@ -4,6 +4,8 @@
   
   ![](https://github.com/Ag994/tweets-analysis-app/blob/main/mcq.gif)
   
+  [The App]([https://realpython.com/installing-python/](https://ag994-tweets-analysis-app-app-lh85qr.streamlit.app/))
+  
   ## Getting Started
    To use this app, follow these steps:
    
@@ -68,34 +70,3 @@ I hope this helps! Let me know if you have any further questions.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-the app link: https://ag994-tweets-analysis-app-app-lh85qr.streamlit.app/
-
-![Algorithm schema](./images/schema.jpg)
