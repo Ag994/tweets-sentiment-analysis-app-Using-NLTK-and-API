@@ -1,8 +1,14 @@
 # Tweet Analysis App
   <p> This app is built using Python, NLTK, and Streamlit. It allows users to input a Twitter 
-  <br> handle \and analyze the sentiment of their recent tweets. </p>
+  <br> handle and analyze the sentiment of their recent tweets. </p>
+  
+  
+  ## Getting Started
+   To use this app, follow these steps:
+   Make sure you have Python and pip installed on your machine. You can check if you have these installed by 
+   running the following commands in your terminal:
 
-To use the app, you will need to install the following dependencies:
+
 
 
 
