@@ -41,6 +41,8 @@
    streamlit run app.py
    ```
    
+   This will open the app in your default web browser. From there, you can enter a Twitter handle and click the "Analyze" button to see the sentiment analysis of the user's recent tweets.
+   
    
 
 
