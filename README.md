@@ -6,7 +6,7 @@
   ## Getting Started
    To use this app, follow these steps:
    
-  1. Make sure you have Python and pip installed on your machine. You can check if you have these installed by 
+1. Make sure you have Python and pip installed on your machine. You can check if you have these installed by 
    running the following commands in your terminal:
    
    ```python
@@ -16,7 +16,7 @@
    
    If you do not have Python or `pip` installed, you can install them by following the instructions [here](https://realpython.com/installing-python/)
    
-  2. Clone this repository and navigate to the root directory of the project.
+2. Clone this repository and navigate to the root directory of the project.
    
    ```python
    git clone https://github.com/Ag994/tweets-analysis-app.git
