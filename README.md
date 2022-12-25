@@ -43,7 +43,18 @@
    
    This will open the app in your default web browser. From there, you can enter a Twitter handle and click the "Analyze" button to see the sentiment analysis of the user's recent tweets.
    
+   ## Sentiment Analysis
    
+   The sentiment analysis is performed using NLTK's built-in sentiment analysis tool. It assigns a polarity score is a value between -1 (very negative) and 1 (very positive), and the subjectivity score is a value between 0 (very objective) and 1 (very subjective). to each tweet based on the words used, with positive words increasing the polarity score and negative words decreasing it.
+   
+   
+   ## Future Work
+   
+   There are many ways that this app could be improved and expanded upon. Some ideas for future work include:
+   
+   * Adding more advanced sentiment analysis techniques, such as using machine learning models to classify tweets.
+   * Adding additional analysis options, such as word frequency or topic modeling.
+   * Implementing user authentication and the ability to save and compare analyses for different users.
 
 
 
