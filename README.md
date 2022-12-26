@@ -4,7 +4,7 @@
   
   ![](https://github.com/Ag994/tweets-analysis-app/blob/main/mcq.gif)
   
-  [The App Link](https://ag994-tweets-analysis-app-app-lh85qr.streamlit.app/)
+  [The App Link](https://ag994-tweets-analysis-app-app-7qap5z.streamlit.app/)
   
   ## Getting Started
    To use this app, follow these steps:
