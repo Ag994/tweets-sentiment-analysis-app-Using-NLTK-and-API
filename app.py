@@ -112,128 +112,131 @@ generate= st.button('Analyze')
 query= '{} lang:{} until:{} since:{}'.format(tweet,lang, end_date,start_date)
 tweets=[]
 
-def analyze():
-    for tweet in sntwitter.TwitterSearchScraper(query).get_items():
-        if len(tweets) == limit:
-            break
-        else:
-            tweets.append([tweet.date, tweet.user.username, tweet.content])
-            
-    df= pd.DataFrame(tweets, columns=['Date','Username','Content'])
+try:
+    def analyze():
+        for tweet in sntwitter.TwitterSearchScraper(query).get_items():
+            if len(tweets) == limit:
+                break
+            else:
+                tweets.append([tweet.date, tweet.user.username, tweet.content])
 
-    nltk.download('stopwords')
-    nltk.download('wordnet')
-    stop_words= set(stopwords.words('english')) | set(stopwords.words('french')) | set(stopwords.words('italian')) | \
-                set(stopwords.words('spanish'))
-    custom_stop= ['RT',tweet]
+        df= pd.DataFrame(tweets, columns=['Date','Username','Content'])
 
-    def preprocess(tweet, stopword):
-        preprocess_tweet= tweet
-        preprocess_tweet.replace('[^\w\s]','')
-        preprocess_tweet= " ".join(word for word in preprocess_tweet.split() if word not in stop_words)
-        preprocess_tweet= " ".join(word for word in preprocess_tweet.split() if word not in custom_stop)
-        lemmatizer = WordNetLemmatizer()
-        preprocess_tweet= " ".join(lemmatizer.lemmatize(word) for word in preprocess_tweet.split())
-        return (preprocess_tweet)
+        nltk.download('stopwords')
+        nltk.download('wordnet')
+        stop_words= set(stopwords.words('english')) | set(stopwords.words('french')) | set(stopwords.words('italian')) | \
+                    set(stopwords.words('spanish'))
+        custom_stop= ['RT',tweet]
 
-    df['preprocess_tweet']= df['Content'].apply(lambda x: preprocess(x, custom_stop))
+        def preprocess(tweet, stopword):
+            preprocess_tweet= tweet
+            preprocess_tweet.replace('[^\w\s]','')
+            preprocess_tweet= " ".join(word for word in preprocess_tweet.split() if word not in stop_words)
+            preprocess_tweet= " ".join(word for word in preprocess_tweet.split() if word not in custom_stop)
+            lemmatizer = WordNetLemmatizer()
+            preprocess_tweet= " ".join(lemmatizer.lemmatize(word) for word in preprocess_tweet.split())
+            return (preprocess_tweet)
 
-    df['Polarity']= df['Content'].apply(lambda x: TextBlob(x).sentiment[0])
-    df['subjectivity']= df['Content'].apply(lambda x: TextBlob(x).sentiment[1])
-    
-    st.write("## Sentiment from the most recent ", len(df)," tweets")
+        df['preprocess_tweet']= df['Content'].apply(lambda x: preprocess(x, custom_stop))
+
+        df['Polarity']= df['Content'].apply(lambda x: TextBlob(x).sentiment[0])
+        df['subjectivity']= df['Content'].apply(lambda x: TextBlob(x).sentiment[1])
+
+        st.write("## Sentiment from the most recent ", len(df)," tweets")
 
 
-    def display_dial(title, value, color):
-        st.markdown(
-            div(
-                style=styles(
-                    text_align="center",
-                    color=color,
-                    padding=(rem(0.8), 0, rem(3), 0),
-                )
-            )(
-                h2(style=styles(font_size=rem(0.8), font_weight=600, padding=0))(title),
-                big(style=styles(font_size=rem(3), font_weight=800, line_height=1))(
-                    value
+        def display_dial(title, value, color):
+            st.markdown(
+                div(
+                    style=styles(
+                        text_align="center",
+                        color=color,
+                        padding=(rem(0.8), 0, rem(3), 0),
+                    )
+                )(
+                    h2(style=styles(font_size=rem(0.8), font_weight=600, padding=0))(title),
+                    big(style=styles(font_size=rem(3), font_weight=800, line_height=1))(
+                        value
+                    ),
                 ),
-            ),
-            unsafe_allow_html=True,
+                unsafe_allow_html=True,
+            )
+
+        # COLOR_RED = "#FF4B4B"
+        COLOR_BLUE = "#1C83E1"
+        COLOR_CYAN = "#00C0F2"
+
+        polarity_color = COLOR_BLUE
+        subjectivity_color = COLOR_CYAN
+
+        a, b = st.columns(2)
+
+        with a:
+            display_dial("Avarage POLARITY", f"{df['Polarity'].mean():.2f}", polarity_color)
+        with b:
+            display_dial("Avarage SUBJECTIVITY", f"{df['subjectivity'].mean():.2f}", subjectivity_color
         )
 
-    # COLOR_RED = "#FF4B4B"
-    COLOR_BLUE = "#1C83E1"
-    COLOR_CYAN = "#00C0F2"
 
-    polarity_color = COLOR_BLUE
-    subjectivity_color = COLOR_CYAN
+        st.write(df.head())
 
-    a, b = st.columns(2)
+        @st.cache
+        def convert_df(df):
+        # IMPORTANT: Cache the conversion to prevent computation on every rerun
+            return df.to_csv().encode('utf-8')
 
-    with a:
-        display_dial("Avarage POLARITY", f"{df['Polarity'].mean():.2f}", polarity_color)
-    with b:
-        display_dial("Avarage SUBJECTIVITY", f"{df['subjectivity'].mean():.2f}", subjectivity_color
-    )
+        csv = convert_df(df)
 
-    
-    st.write(df.head())
- 
-    @st.cache
-    def convert_df(df):
-    # IMPORTANT: Cache the conversion to prevent computation on every rerun
-        return df.to_csv().encode('utf-8')
+        st.download_button(
+            label="Download data as CSV",
+            data=csv,
+            file_name='large_df.csv',
+            mime='text/csv'
+            )
 
-    csv = convert_df(df)
+        # fig, ax= plt.subplots(1,1, figsize=(20,7))
+        # ax.plot(df['Date'], df['Polarity'])
+        # ax.set_title('polarity over time from start date to the end date', fontsize= 20)
+        # st.pyplot(fig)
 
-    st.download_button(
-        label="Download data as CSV",
-        data=csv,
-        file_name='large_df.csv',
-        mime='text/csv'
+        # layout = Layout(plot_bgcolor='rgba(0,0,0,0)')
+        io.templates.default = 'seaborn'
+
+        fig = px.line(
+            df,
+            x='Date',
+            y="Polarity",
+            title='polarity over time from start date to the end date',
+            markers=True
+            # width=600, 
+            # height=400
         )
-
-    # fig, ax= plt.subplots(1,1, figsize=(20,7))
-    # ax.plot(df['Date'], df['Polarity'])
-    # ax.set_title('polarity over time from start date to the end date', fontsize= 20)
-    # st.pyplot(fig)
-
-    # layout = Layout(plot_bgcolor='rgba(0,0,0,0)')
-    io.templates.default = 'seaborn'
-    
-    fig = px.line(
-        df,
-        x='Date',
-        y="Polarity",
-        title='polarity over time from start date to the end date',
-        markers=True
-        # width=600, 
-        # height=400
-    )
-    # with col4:
-    #     st.plotly_chart(fig, theme="streamlit")
-    st.write(fig)
-    
-
-    fig1 = px.line(
-        df,
-        x='Date',
-        y="subjectivity",
-        title='subjectivity over time from start date to the end date',
-        markers=True
-        # width=600, 
-        # height=400
-    )       
-    # with col6:  
-    #     st.plotly_chart(fig1, use_container_width=True)
-    st.write(fig1)
+        # with col4:
+        #     st.plotly_chart(fig, theme="streamlit")
+        st.write(fig)
 
 
-if generate:
-    with st.spinner("Executing..."):
-        result= analyze()
-    st.write(result)
-    
+        fig1 = px.line(
+            df,
+            x='Date',
+            y="subjectivity",
+            title='subjectivity over time from start date to the end date',
+            markers=True
+            # width=600, 
+            # height=400
+        )       
+        # with col6:  
+        #     st.plotly_chart(fig1, use_container_width=True)
+        st.write(fig1)
+
+
+    if generate:
+        with st.spinner("Executing..."):
+            result= analyze()
+        st.write(result)
+        
+except UnboundLocalError:
+    st.error('Please enter a valid values')
 
     # fig.update_layout(margin={"t": 30, "b": 0})
     # fig1.update_layout(margin={"t": 30, "b": 0})
