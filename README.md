@@ -3,6 +3,7 @@
   <br> handle and analyze the sentiment of their recent tweets. </p>
   
   ![](https://github.com/Ag994/tweets-analysis-app/blob/main/mcq.gif)
+  
   [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]([https://share.streamlit.io/yourGitHubName/yourRepo/yourApp/](https://ag994-tweets-analysis-app-app-7qap5z.streamlit.app/))
   
 <!--   [![Streamlit App](https://ag994-tweets-analysis-app-app-7qap5z.streamlit.app/) -->
