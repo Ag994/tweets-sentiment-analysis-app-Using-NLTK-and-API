@@ -4,7 +4,7 @@
   
   ![](https://github.com/Ag994/tweets-analysis-app/blob/main/mcq.gif)
   
-  [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ag994-tweets-analysis-app-app-7qap5z.streamlit.app/))
+  [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ag994-tweets-analysis-app-app-7qap5z.streamlit.app/)
   
 <!--   [![Streamlit App](https://ag994-tweets-analysis-app-app-7qap5z.streamlit.app/) -->
   
