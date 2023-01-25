@@ -6,7 +6,7 @@
   
   [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ag994-tweets-analysis-app-app-7qap5z.streamlit.app/)
   
-<!--   [![Streamlit App](https://ag994-tweets-analysis-app-app-7qap5z.streamlit.app/) -->
+<!--   [![Streamlit App](https://ag994-tweets-sentiment-analysis-app-using-nltk-and-a-app-ne300f.streamlit.app/) -->
   
   ## Getting Started
    To use this app, follow these steps:
