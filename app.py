@@ -79,7 +79,7 @@ start_date= col1.date_input("Enter your start date")
 
 end_date= col2.date_input("Enter your end date")
 
-lang= col3.selectbox('Select Language:',('en', 'es', 'it', 'fr'))
+lang= col3.selectbox('Select Language:',('en', 'es', 'it', 'fr','ar'))
 
 tweet= st.text_input('Enter your search tweet')
 
