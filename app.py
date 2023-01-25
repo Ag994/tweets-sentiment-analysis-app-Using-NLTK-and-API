@@ -114,7 +114,7 @@ tweets=[]
 
 try:
     def analyze():
-        for tweet in sntwitter.TwitterSearchScraper(query, top=True).get_items():
+        for tweet in sntwitter.TwitterSearchScraper(query).get_items():
             if len(tweets) == limit:
                 break
             else:
